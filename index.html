@@ -21,12 +21,12 @@ body, html {
     font-family: "Prompt", sans-serif;
     background: transparent;
     color: var(--text);
-    overflow: auto; /* <-- เปลี่ยนจาก hidden เป็น auto */
+    overflow: auto;
 }
 
 .content {
     position: relative;
-    z-index: 1; /* ให้เนื้อหาอยู่เหนือ canvas */
+    z-index: 1;
     padding: 20px;
     text-align: center;
 }
@@ -35,7 +35,7 @@ body, html {
 .tab-menu {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
     margin-top: 25px;
     flex-wrap: wrap;
 }
@@ -45,10 +45,11 @@ body, html {
     border: 2px solid var(--purple);
     border-radius: 12px;
     padding: 10px;
-    width: 150px;
+    width: 140px;
     cursor: pointer;
     transition: 0.3s;
     backdrop-filter: blur(5px);
+    flex-shrink: 0;
 }
 
 .tab-btn img {
@@ -60,7 +61,7 @@ body, html {
 
 .tab-btn p {
     margin: 8px 0 0;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -81,7 +82,7 @@ body, html {
     animation: fadeIn 0.8s ease;
     background: rgba(20, 0, 30, 0.7);
     border: 1px solid var(--purple);
-    padding: 25px;
+    padding: 20px;
     margin-top: 30px;
     border-radius: 12px;
     backdrop-filter: blur(7px);
@@ -91,9 +92,16 @@ body, html {
 }
 
 .tab-content img {
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     border-radius: 10px;
     margin-bottom: 15px;
+}
+
+.tab-content iframe {
+    width: 100%;
+    max-width: 420px;
+    height: 240px;
 }
 
 @keyframes fadeIn {
@@ -107,8 +115,51 @@ canvas {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* <- อยู่ด้านหลังเนื้อหา */
+    z-index: -1;
     background: black;
+}
+
+/* ---------------- RESPONSIVE FOR MOBILE ---------------- */
+@media (max-width: 768px) {
+    .tab-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .tab-btn {
+        width: 120px;
+        padding: 8px;
+    }
+
+    .tab-btn img {
+        height: 100px;
+    }
+
+    .tab-btn p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-menu {
+        gap: 10px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+    }
+
+    .tab-content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .tab-content iframe {
+        height: 200px;
+    }
 }
 </style>
 </head>
@@ -152,59 +203,38 @@ canvas {
 
     </div>
 
-    <!-- ------------ CONTENT ------------- -->
-
-    <!-- HOME -->
+    <!-- CONTENT BOXES -->
     <div id="home" class="tab-content" style="display:block;">
         <h2>ยินดีต้อนรับ</h2>
         <p>เลือกอุปกรณ์คอมพิวเตอร์จากปุ่มด้านบนเพื่อเรียนรู้รายละเอียด พร้อมภาพและวิดีโอประกอบ</p>
     </div>
 
-    <!-- CPU -->
     <div id="cpu" class="tab-content">
-        <h2>CPU คือสมองของคอมพิวเตอร์ ทำหน้าที่คิด คำนวณ ประมวลผลคำสั่งทุกอย่าง เช่น การเปิดโปรแกรม เล่นเกม หรือทำงานต่าง ๆ ภายในเครื่อง ยิ่ง CPU แรง คอร์เยอะ ความเร็วสูง เครื่องก็ยิ่งลื่น ทำงานได้หลายอย่างพร้อมกันแบบไม่สะดุด เหมือนเป็นหัวหน้าที่คอยสั่งงานอุปกรณ์ทุกชิ้นในคอม</h2>
+        <h2>CPU คือสมองของคอมพิวเตอร์...</h2>
         <img src="https://i.ibb.co/9mqSQxMg/07e2a9e681dd4a63b316c2f559578e27.jpg">
         <p>CPU คือสมองของคอมพิวเตอร์ ทำหน้าที่ประมวลผลคำสั่งต่าง ๆ</p>
-
-        <iframe width="420" height="240"
-            src="https://www.youtube.com/embed/n1CivRU6IHU">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/n1CivRU6IHU" allowfullscreen></iframe>
     </div>
 
-    <!-- RAM -->
     <div id="ram" class="tab-content">
-        <h2>“RAM คือพื้นที่ที่คอมใช้เก็บข้อมูลชั่วคราวในขณะที่เครื่องกำลังทำงาน เช่น เปิดเบราว์เซอร์ โปรแกรม เกม ถ้า RAM เยอะ เครื่องจะลื่น เปิดหลายโปรแกรมพร้อมกันได้ ถ้า RAM น้อยจะช้า หน่วง หรือค้าง เพราะไม่มีพื้นที่เพียงพอให้ระบบโหลดข้อมูล</h2>
+        <h2>RAM คือพื้นที่ที่คอมใช้เก็บข้อมูลชั่วคราว...</h2>
         <img src="https://i.ibb.co/wrSRxvtH/2017718-61747.jpg">
         <p>RAM ใช้เก็บข้อมูลชั่วคราวเพื่อให้ CPU เข้าถึงได้รวดเร็ว</p>
-
-        <iframe width="420" height="240"
-            src="https://www.youtube.com/embed/7H8JbIyWq4M">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/7H8JbIyWq4M" allowfullscreen></iframe>
     </div>
 
-    <!-- HARD DISK -->
     <div id="hdd" class="tab-content">
-        <h2>เป็นที่เก็บข้อมูลหลักของคอม เช่น รูปภาพ วิดีโอ ไฟล์งาน โปรแกรม และระบบ Windows
-• HDD – ความจุเยอะ ราคาถูก แต่ช้า
-• SSD – เร็วมาก เปิดเครื่องไว โหลดเกมเร็ว ทำให้ระบบทำงานลื่นกว่า
-คอมยุคใหม่เกือบทุกเครื่องใช้ SSD เป็นหลักเพราะความเร็วสูงกว่าหลายเท่า</h2>
+        <h2>เป็นที่เก็บข้อมูลหลักของคอม...</h2>
         <img src="https://i.ibb.co/ZzPJj60z/unnamed.jpg">
         <p>อุปกรณ์เก็บข้อมูลถาวร เช่น ไฟล์งาน ระบบปฏิบัติการ และโปรแกรม</p>
-
-        <iframe width="420" height="240"
-            src="https://www.youtube.com/embed/acUeidjO5us">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/acUeidjO5us" allowfullscreen></iframe>
     </div>
 
-    <!-- MAINBOARD -->
     <div id="main" class="tab-content">
-        <h2>เมนบอร์ดคือชิ้นส่วนที่เชื่อมต่ออุปกรณ์ทุกอย่างในคอมเข้าด้วยกัน เช่น CPU, RAM, SSD, การ์ดจอ, พอร์ตต่าง ๆ ทำหน้าที่ให้ทุกชิ้นทำงานร่วมกันได้อย่างสมบูรณ์ เปรียบเหมือนร่างกายที่มีเส้นเลือดเชื่อมอวัยวะทั้งหมด ถ้าเมนบอร์ดดี จะรองรับการอัปเกรดและเพิ่มอุปกรณ์ในอนาคตได้ง่าย</h2>
+        <h2>เมนบอร์ดคือชิ้นส่วนที่เชื่อมต่ออุปกรณ์ทุกอย่างในคอม...</h2>
         <img src="https://i.ibb.co/0Rsb6J9s/01-6.png">
         <p>Mainboard เชื่อมต่ออุปกรณ์ทั้งหมดให้ทำงานร่วมกันได้</p>
-
-        <iframe width="420" height="240"
-            src="https://www.youtube.com/embed/t_MEudqMpeM">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/t_MEudqMpeM" allowfullscreen></iframe>
     </div>
 
 </div>
