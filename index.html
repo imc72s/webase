@@ -21,12 +21,12 @@ body, html {
     font-family: "Prompt", sans-serif;
     background: transparent;
     color: var(--text);
-    overflow: hidden;
+    overflow: auto; /* <-- เปลี่ยนจาก hidden เป็น auto */
 }
 
 .content {
     position: relative;
-    z-index: 3;
+    z-index: 1; /* ให้เนื้อหาอยู่เหนือ canvas */
     padding: 20px;
     text-align: center;
 }
@@ -107,7 +107,7 @@ canvas {
     top: 0; left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1; /* <- อยู่ด้านหลังเนื้อหา */
     background: black;
 }
 </style>
@@ -228,8 +228,13 @@ let points = [];
 const numPoints = 50;
 const maxDistance = 200;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 function createPoints() {
     points = [];
