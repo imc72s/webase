@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Hardware Presentation</title>
+
+<style>
+/* ---------------- ROOT THEME ---------------- */
+:root {
+    --bg-dark: #0a0014;
+    --purple: #7b2cbf;
+    --purple-light: #d0a6ff;
+    --text: #e9dfff;
+}
+
+/* ---------------- GLOBAL ---------------- */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Prompt", sans-serif;
+    background: transparent;
+    color: var(--text);
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ---------------- TAB BUTTON IMAGE STYLE ---------------- */
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: rgba(155, 155, 155, 0.5);
+    border: 2px solid var(--purple);
+    border-radius: 12px;
+    padding: 10px;
+    width: 150px;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.tab-btn img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.tab-btn p {
+    margin: 8px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tab-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 20px var(--purple);
+}
+
+.active-tab {
+    border-color: var(--purple-light);
+    box-shadow: 0 0 25px var(--purple-light);
+    transform: translateY(-6px);
+}
+
+/* ---------------- CONTENT BOX ---------------- */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.8s ease;
+    background: rgba(20, 0, 30, 0.7);
+    border: 1px solid var(--purple);
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 12px;
+    backdrop-filter: blur(7px);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab-content img {
+    width: 350px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- CANVAS BACKGROUND ---------------- */
+canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: black;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="backgroundCanvas"></canvas>
+
+<div class="content">
+    <h1 style="color: var(--purple-light); margin-top: 10px;">
+        ✨ แนะนำอุปกรณ์คอมพิวเตอร์ (Computer Hardware) ✨
+    </h1>
+
+    <!-- TAB IMAGE BUTTONS -->
+    <div class="tab-menu">
+
+        <div class="tab-btn active-tab" onclick="openTab('home', this)">
+            <img src="https://i.ibb.co/8n44HfR2/1946436.png">
+            <p>หน้าแรก</p>
+        </div>
+
+        <div class="tab-btn" onclick="openTab('cpu', this)">
+            <img src="https://i.ibb.co/YBwqZwM7/2432574.png">
+            <p>CPU</p>
+        </div>
+
+        <div class="tab-btn" onclick="openTab('ram', this)">
+            <img src="https://i.ibb.co/R4zTMc8X/9239534.png">
+            <p>RAM</p>
+        </div>
+
+        <div class="tab-btn" onclick="openTab('hdd', this)">
+            <img src="https://i.ibb.co/8L0dtfMt/8840552.png">
+            <p>Harddisk</p>
+        </div>
+
+        <div class="tab-btn" onclick="openTab('main', this)">
+            <img src="https://i.ibb.co/jPmspvfT/2729189.png">
+            <p>Mainboard</p>
+        </div>
+
+    </div>
+
+    <!-- ------------ CONTENT ------------- -->
+
+    <!-- HOME -->
+    <div id="home" class="tab-content" style="display:block;">
+        <h2>ยินดีต้อนรับ</h2>
+        <p>เลือกอุปกรณ์คอมพิวเตอร์จากปุ่มด้านบนเพื่อเรียนรู้รายละเอียด พร้อมภาพและวิดีโอประกอบ</p>
+    </div>
+
+    <!-- CPU -->
+    <div id="cpu" class="tab-content">
+        <h2>CPU คือสมองของคอมพิวเตอร์ ทำหน้าที่คิด คำนวณ ประมวลผลคำสั่งทุกอย่าง เช่น การเปิดโปรแกรม เล่นเกม หรือทำงานต่าง ๆ ภายในเครื่อง ยิ่ง CPU แรง คอร์เยอะ ความเร็วสูง เครื่องก็ยิ่งลื่น ทำงานได้หลายอย่างพร้อมกันแบบไม่สะดุด เหมือนเป็นหัวหน้าที่คอยสั่งงานอุปกรณ์ทุกชิ้นในคอม</h2>
+        <img src="https://i.ibb.co/9mqSQxMg/07e2a9e681dd4a63b316c2f559578e27.jpg">
+        <p>CPU คือสมองของคอมพิวเตอร์ ทำหน้าที่ประมวลผลคำสั่งต่าง ๆ</p>
+
+        <iframe width="420" height="240"
+            src="https://www.youtube.com/embed/n1CivRU6IHU">
+        </iframe>
+    </div>
+
+    <!-- RAM -->
+    <div id="ram" class="tab-content">
+        <h2>“RAM คือพื้นที่ที่คอมใช้เก็บข้อมูลชั่วคราวในขณะที่เครื่องกำลังทำงาน เช่น เปิดเบราว์เซอร์ โปรแกรม เกม ถ้า RAM เยอะ เครื่องจะลื่น เปิดหลายโปรแกรมพร้อมกันได้ ถ้า RAM น้อยจะช้า หน่วง หรือค้าง เพราะไม่มีพื้นที่เพียงพอให้ระบบโหลดข้อมูล</h2>
+        <img src="https://i.ibb.co/wrSRxvtH/2017718-61747.jpg">
+        <p>RAM ใช้เก็บข้อมูลชั่วคราวเพื่อให้ CPU เข้าถึงได้รวดเร็ว</p>
+
+        <iframe width="420" height="240"
+            src="https://www.youtube.com/embed/7H8JbIyWq4M">
+        </iframe>
+    </div>
+
+    <!-- HARD DISK -->
+    <div id="hdd" class="tab-content">
+        <h2>เป็นที่เก็บข้อมูลหลักของคอม เช่น รูปภาพ วิดีโอ ไฟล์งาน โปรแกรม และระบบ Windows
+• HDD – ความจุเยอะ ราคาถูก แต่ช้า
+• SSD – เร็วมาก เปิดเครื่องไว โหลดเกมเร็ว ทำให้ระบบทำงานลื่นกว่า
+คอมยุคใหม่เกือบทุกเครื่องใช้ SSD เป็นหลักเพราะความเร็วสูงกว่าหลายเท่า</h2>
+        <img src="https://i.ibb.co/ZzPJj60z/unnamed.jpg">
+        <p>อุปกรณ์เก็บข้อมูลถาวร เช่น ไฟล์งาน ระบบปฏิบัติการ และโปรแกรม</p>
+
+        <iframe width="420" height="240"
+            src="https://www.youtube.com/embed/acUeidjO5us">
+        </iframe>
+    </div>
+
+    <!-- MAINBOARD -->
+    <div id="main" class="tab-content">
+        <h2>เมนบอร์ดคือชิ้นส่วนที่เชื่อมต่ออุปกรณ์ทุกอย่างในคอมเข้าด้วยกัน เช่น CPU, RAM, SSD, การ์ดจอ, พอร์ตต่าง ๆ ทำหน้าที่ให้ทุกชิ้นทำงานร่วมกันได้อย่างสมบูรณ์ เปรียบเหมือนร่างกายที่มีเส้นเลือดเชื่อมอวัยวะทั้งหมด ถ้าเมนบอร์ดดี จะรองรับการอัปเกรดและเพิ่มอุปกรณ์ในอนาคตได้ง่าย</h2>
+        <img src="https://i.ibb.co/0Rsb6J9s/01-6.png">
+        <p>Mainboard เชื่อมต่ออุปกรณ์ทั้งหมดให้ทำงานร่วมกันได้</p>
+
+        <iframe width="420" height="240"
+            src="https://www.youtube.com/embed/t_MEudqMpeM">
+        </iframe>
+    </div>
+
+</div>
+
+<!-- ---------------- INTERACTION SCRIPT ---------------- -->
+<script>
+function openTab(tabName, element) {
+    document.querySelectorAll('.tab-content').forEach(t => t.style.display = "none");
+    document.getElementById(tabName).style.display = "block";
+
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove("active-tab"));
+    element.classList.add("active-tab");
+}
+</script>
+
+<!-- ---------------- CANVAS BACKGROUND SCRIPT ---------------- -->
+<script>
+const canvas = document.getElementById('backgroundCanvas');
+const ctx = canvas.getContext('2d');
+let points = [];
+const numPoints = 50;
+const maxDistance = 200;
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function createPoints() {
+    points = [];
+    for (let i = 0; i < numPoints; i++) {
+        points.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 2,
+            vy: (Math.random() - 0.5) * 2
+        });
+    }
+}
+
+function drawLines() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < points.length; i++) {
+        const A = points[i];
+        ctx.beginPath();
+        ctx.arc(A.x, A.y, 1, 0, 2 * Math.PI);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        for (let j = i + 1; j < points.length; j++) {
+            const B = points[j];
+            const dist = Math.hypot(A.x - B.x, A.y - B.y);
+            if (dist < maxDistance) {
+                ctx.beginPath();
+                ctx.moveTo(A.x, A.y);
+                ctx.lineTo(B.x, B.y);
+                ctx.strokeStyle = `rgba(255,255,255,${1 - dist / maxDistance})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+        }
+    }
+}
+
+function updatePoints() {
+    for (let p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    }
+}
+
+function animate() {
+    drawLines();
+    updatePoints();
+    requestAnimationFrame(animate);
+}
+
+createPoints();
+animate();
+</script>
+
+</body>
+</html>
